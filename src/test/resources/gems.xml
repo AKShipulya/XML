@@ -1,0 +1,29 @@
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.epam.com/gems"
+      xsi:schemaLocation="http://www.epam.com/gems gems.xsd">
+
+    <syntheticgem id="id1">
+        <name>Synthetic Diamond</name>
+        <preciousness>precious</preciousness>
+        <gemproductionplace>USA-Diamond Factory</gemproductionplace>
+    </syntheticgem>
+
+    <syntheticgem id="id2">
+        <name>Synthetic Amethyst</name>
+        <preciousness>semiprecious</preciousness>
+        <gemproductionplace>JSC Gomel PO "Kristall"</gemproductionplace>
+    </syntheticgem>
+
+    <naturalgem id="id3">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <gemdeposit>South Africa-Diamonds Africa LLC</gemdeposit>
+    </naturalgem>
+
+    <naturalgem id="id4">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <gemdeposit>Colombia-OJSC Colombian emeralds</gemdeposit>
+    </naturalgem>
+
+</gems>
