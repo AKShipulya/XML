@@ -1,9 +1,14 @@
 package com.epam.xml.entity;
 
+import com.epam.xml.entity.type.Preciousness;
+
 public class SyntheticGem extends Gem {
     private String GemProductionPlace;
 
-    public SyntheticGem(int id, String name, Preciousness preciousness, String gemProductionPlace) {
+    public SyntheticGem() {
+    }
+
+    public SyntheticGem(String id, String name, Preciousness preciousness, String gemProductionPlace) {
         super(id, name, preciousness);
         GemProductionPlace = gemProductionPlace;
     }

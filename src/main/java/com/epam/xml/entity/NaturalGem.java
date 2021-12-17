@@ -1,9 +1,14 @@
 package com.epam.xml.entity;
 
+import com.epam.xml.entity.type.Preciousness;
+
 public class NaturalGem extends Gem {
     private String GemDeposit;
 
-    public NaturalGem(int id, String name, Preciousness preciousness, String gemDeposit) {
+    public NaturalGem() {
+    }
+
+    public NaturalGem(String id, String name, Preciousness preciousness, String gemDeposit) {
         super(id, name, preciousness);
         GemDeposit = gemDeposit;
     }

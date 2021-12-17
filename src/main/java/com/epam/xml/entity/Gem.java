@@ -1,23 +1,28 @@
 package com.epam.xml.entity;
 
+import com.epam.xml.entity.type.Preciousness;
+
 import java.util.Objects;
 
 public abstract class Gem {
-    private int id;
+    private String id;
     private String name;
     Preciousness preciousness;
 
-    public Gem(int id, String name, Preciousness preciousness) {
+    public Gem(String id, String name, Preciousness preciousness) {
         this.id = id;
         this.name = name;
         this.preciousness = preciousness;
     }
 
-    public int getId() {
+    protected Gem() {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -48,10 +53,10 @@ public abstract class Gem {
 
         Gem gem = (Gem) o;
 
-        if (id != gem.id) {
+        if (id != null ? !id.equals(gem.id) : gem.id != null) {
             return false;
         }
-        if (!Objects.equals(name, gem.name)) {
+        if (name != null ? !name.equals(gem.name) : gem.name != null) {
             return false;
         }
         return preciousness == gem.preciousness;
@@ -59,7 +64,7 @@ public abstract class Gem {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (preciousness != null ? preciousness.hashCode() : 0);
         return result;
@@ -68,7 +73,7 @@ public abstract class Gem {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Gem{");
-        sb.append("id=").append(id);
+        sb.append("id='").append(id).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", preciousness=").append(preciousness);
         sb.append('}');
