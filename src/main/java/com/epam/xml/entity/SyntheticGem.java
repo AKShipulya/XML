@@ -22,18 +22,18 @@ public class SyntheticGem extends Gem {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        if (!super.equals(o)) {
+        if (!super.equals(object)) {
             return false;
         }
 
-        SyntheticGem that = (SyntheticGem) o;
+        SyntheticGem that = (SyntheticGem) object;
 
         return GemProductionPlace != null ? GemProductionPlace.equals(that.GemProductionPlace) : that.GemProductionPlace == null;
     }
@@ -48,10 +48,10 @@ public class SyntheticGem extends Gem {
     @Override
     public String
     toString() {
-        final StringBuilder sb = new StringBuilder("SyntheticGem{");
-        sb.append("preciousness=").append(preciousness);
-        sb.append(", GemProductionPlace='").append(GemProductionPlace).append('\'');
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder stringBuilder = new StringBuilder("SyntheticGem{");
+        stringBuilder.append("preciousness=").append(preciousness);
+        stringBuilder.append(", GemProductionPlace='").append(GemProductionPlace).append('\'');
+        stringBuilder.append('}').append("\n");
+        return stringBuilder.toString();
     }
 }

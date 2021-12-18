@@ -21,8 +21,8 @@ public enum GemTag {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("GemTag{");
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder stringBuilder = new StringBuilder("GemTag{");
+        stringBuilder.append('}');
+        return stringBuilder.toString();
     }
 }

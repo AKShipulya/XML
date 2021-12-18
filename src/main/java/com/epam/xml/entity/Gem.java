@@ -43,15 +43,15 @@ public abstract class Gem {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
 
-        Gem gem = (Gem) o;
+        Gem gem = (Gem) object;
 
         if (id != null ? !id.equals(gem.id) : gem.id != null) {
             return false;
@@ -72,11 +72,11 @@ public abstract class Gem {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Gem{");
-        sb.append("id='").append(id).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", preciousness=").append(preciousness);
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder stringBuilder = new StringBuilder("Gem{");
+        stringBuilder.append("id='").append(id).append('\'');
+        stringBuilder.append(", name='").append(name).append('\'');
+        stringBuilder.append(", preciousness=").append(preciousness);
+        stringBuilder.append('}').append("\n");
+        return stringBuilder.toString();
     }
 }

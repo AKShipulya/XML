@@ -22,18 +22,18 @@ public class NaturalGem extends Gem {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        if (!super.equals(o)) {
+        if (!super.equals(object)) {
             return false;
         }
 
-        NaturalGem that = (NaturalGem) o;
+        NaturalGem that = (NaturalGem) object;
 
         return GemDeposit != null ? GemDeposit.equals(that.GemDeposit) : that.GemDeposit == null;
     }
@@ -47,10 +47,10 @@ public class NaturalGem extends Gem {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("NaturalGem{");
-        sb.append("preciousness=").append(preciousness);
-        sb.append(", GemDeposit='").append(GemDeposit).append('\'');
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder stringBuilder = new StringBuilder("NaturalGem{");
+        stringBuilder.append("preciousness=").append(preciousness);
+        stringBuilder.append(", GemDeposit='").append(GemDeposit).append('\'');
+        stringBuilder.append('}').append("\n");
+        return stringBuilder.toString();
     }
 }

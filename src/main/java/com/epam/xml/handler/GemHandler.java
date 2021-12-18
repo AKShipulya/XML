@@ -19,11 +19,11 @@ public class GemHandler extends DefaultHandler {
     private final List<Gem> gems;
     private Gem currentGem;
     private GemTag currentTag;
-    private final EnumSet<GemTag> withText;
+    private final EnumSet<GemTag> WITH_TEXT;
 
     public GemHandler() {
         gems = new ArrayList<>();
-        withText = EnumSet.range(GemTag.ID, GemTag.GEMDEPOSIT);
+        WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEMDEPOSIT);
     }
 
 
@@ -39,8 +39,10 @@ public class GemHandler extends DefaultHandler {
             switch (gemType) {
                 case NATURALGEM:
                     currentGem = new NaturalGem();
+                    break;
                 case SYNTHETICGEM:
                     currentGem = new SyntheticGem();
+                    break;
             }
             if (attributes.getLength() == 1) {
                 currentGem.setId(attributes.getValue(0));
@@ -50,7 +52,7 @@ public class GemHandler extends DefaultHandler {
             }
         } else {
             GemTag temp = GemTag.valueOf(name.toUpperCase(Locale.ROOT));
-            if (withText.contains(temp)) {
+            if (WITH_TEXT.contains(temp)) {
                 currentTag = temp;
             }
         }
@@ -58,7 +60,7 @@ public class GemHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (qName.equals(GemType.NATURALGEM.toString()) || qName.equals(GemType.NATURALGEM.toString())) {
+        if (qName.equals(GemType.NATURALGEM.toString()) || qName.equals(GemType.SYNTHETICGEM.toString())) {
             gems.add(currentGem);
         }
     }
@@ -75,11 +77,8 @@ public class GemHandler extends DefaultHandler {
                     String precious = data.toUpperCase(Locale.ROOT);
                     currentGem.setPreciousness(Preciousness.valueOf(precious));
                     break;
-                // FIXME: 17.12.2021 Check this "case" it must be like next one!
                 case GEMDEPOSIT:
-                    NaturalGem tempNaturalGem = new NaturalGem();
-                    tempNaturalGem.setId(currentGem.getId());
-                    tempNaturalGem.setName(currentGem.getName());
+                    NaturalGem tempNaturalGem = (NaturalGem) currentGem;
                     tempNaturalGem.setGemDeposit(data);
                     break;
                 case GEMPRODUCTIONPLACE:
