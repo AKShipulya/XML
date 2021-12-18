@@ -19,9 +19,6 @@ import java.util.List;
 public class SaxParserImpl implements Parser {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public SaxParserImpl() {
-    }
-
     @Override
     public List<Gem> parse(String filePath) throws ParserCustomException {
         try {

@@ -7,7 +7,7 @@ import com.epam.xml.parser.impl.SaxParserImpl;
 
 public class ParserFactory {
 
-    Parser create(ParserType parserType) throws ParserCustomException {
+    public static Parser create(ParserType parserType) throws ParserCustomException {
         switch (parserType) {
             case DOM_PARSER:
                 return new DomParserImpl();

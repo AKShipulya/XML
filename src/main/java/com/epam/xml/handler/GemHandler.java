@@ -7,7 +7,6 @@ import com.epam.xml.entity.type.GemTag;
 import com.epam.xml.entity.type.GemType;
 import com.epam.xml.entity.type.Preciousness;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
@@ -59,14 +58,14 @@ public class GemHandler extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         if (qName.equals(GemType.NATURALGEM.toString()) || qName.equals(GemType.SYNTHETICGEM.toString())) {
             gems.add(currentGem);
         }
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         String data = new String(ch, start, length).trim();
         if (currentTag != null) {
             switch (currentTag) {
