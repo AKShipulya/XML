@@ -45,8 +45,8 @@ public class DomParserImpl implements Parser {
             DocumentBuilder documentBuilder = FACTORY.newDocumentBuilder();
             document = documentBuilder.parse(filePath);
             Element root = document.getDocumentElement();
-            createSpecifiedTypeGems(root, GemType.NATURALGEM);
-            createSpecifiedTypeGems(root, GemType.SYNTHETICGEM);
+            createSpecifiedTypeGems(root, GemType.NATURAL_GEM);
+            createSpecifiedTypeGems(root, GemType.SYNTHETIC_GEM);
             LOGGER.info("XML has been parsed successfully!");
         } catch (SAXException | IOException | ParserConfigurationException | ParserCustomException exception) {
             LOGGER.warn(String.format("File %s can't ber read or parsed", filePath), exception);
@@ -66,13 +66,13 @@ public class DomParserImpl implements Parser {
     private Gem buildGem(Element gemElement, GemType gemType) throws ParserCustomException {
         Gem gem;
         switch (gemType) {
-            case NATURALGEM:
+            case NATURAL_GEM:
                 gem = new NaturalGem();
-                ((NaturalGem) gem).setGemDeposit(getElementTextContent(gemElement, GemTag.GEMDEPOSIT.toString()));
+                ((NaturalGem) gem).setGemDeposit(getElementTextContent(gemElement, GemTag.GEM_DEPOSIT.toString()));
                 break;
-            case SYNTHETICGEM:
+            case SYNTHETIC_GEM:
                 gem = new SyntheticGem();
-                ((SyntheticGem) gem).setGemProductionPlace(getElementTextContent(gemElement, GemTag.GEMPRODUCTIONPLACE.toString()));
+                ((SyntheticGem) gem).setGemProductionPlace(getElementTextContent(gemElement, GemTag.GEM_PRODUCTION_PLACE.toString()));
                 break;
             default:
                 throw new ParserCustomException("Invalid gem type!");

@@ -22,7 +22,7 @@ public class GemHandler extends DefaultHandler {
 
     public GemHandler() {
         gems = new ArrayList<>();
-        WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEMDEPOSIT);
+        WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT);
     }
 
 
@@ -33,13 +33,14 @@ public class GemHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         String name = qName.toUpperCase(Locale.ROOT);
-        if (qName.equals(GemType.NATURALGEM.toString()) || qName.equals(GemType.SYNTHETICGEM.toString())) {
+        name = name.replace('-', '_');
+        if (qName.equals(GemType.NATURAL_GEM.toString()) || qName.equals(GemType.SYNTHETIC_GEM.toString())) {
             GemType gemType = GemType.valueOf(name);
             switch (gemType) {
-                case NATURALGEM:
+                case NATURAL_GEM:
                     currentGem = new NaturalGem();
                     break;
-                case SYNTHETICGEM:
+                case SYNTHETIC_GEM:
                     currentGem = new SyntheticGem();
                     break;
             }
@@ -59,7 +60,7 @@ public class GemHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) {
-        if (qName.equals(GemType.NATURALGEM.toString()) || qName.equals(GemType.SYNTHETICGEM.toString())) {
+        if (qName.equals(GemType.NATURAL_GEM.toString()) || qName.equals(GemType.SYNTHETIC_GEM.toString())) {
             gems.add(currentGem);
         }
     }
@@ -76,11 +77,11 @@ public class GemHandler extends DefaultHandler {
                     String precious = data.toUpperCase(Locale.ROOT);
                     currentGem.setPreciousness(Preciousness.valueOf(precious));
                     break;
-                case GEMDEPOSIT:
+                case GEM_DEPOSIT:
                     NaturalGem tempNaturalGem = (NaturalGem) currentGem;
                     tempNaturalGem.setGemDeposit(data);
                     break;
-                case GEMPRODUCTIONPLACE:
+                case GEM_PRODUCTION_PLACE:
                     SyntheticGem tempSyntheticGem = (SyntheticGem) currentGem;
                     tempSyntheticGem.setGemProductionPlace(data);
                     break;
