@@ -9,6 +9,8 @@ import com.epam.xml.validator.XmlValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.bind.JAXBException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +32,8 @@ public class XmlDirector {
                 Parser parser = ParserFactory.create(PARSER_TYPE);
                 gems = parser.parse(xmlFilePath);
                 LOGGER.info("Gems were created successfully!");
-            } catch (ParserCustomException exception) {
-                LOGGER.warn("File can't be parsed!", exception);
+            } catch (ParserCustomException | JAXBException | FileNotFoundException exception) {
+                LOGGER.warn("File can't be parsed! Cause: {}", exception.getMessage());
             }
         } else
             throw new ParserCustomException("XML file is invalid!");

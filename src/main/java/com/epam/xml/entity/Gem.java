@@ -2,11 +2,21 @@ package com.epam.xml.entity;
 
 import com.epam.xml.entity.type.Preciousness;
 
-import java.util.Objects;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "gem", propOrder = {"name", "preciousness"})
+@XmlSeeAlso({NaturalGem.class, SyntheticGem.class})
 public abstract class Gem {
+    @XmlAttribute(required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlID
     private String id;
+    @XmlElement(namespace = "http://www.epam.com/gems", required = true)
     private String name;
+    @XmlElement(namespace = "http://www.epam.com/gems", required = true)
     Preciousness preciousness;
 
     public Gem(String id, String name, Preciousness preciousness) {
@@ -15,7 +25,7 @@ public abstract class Gem {
         this.preciousness = preciousness;
     }
 
-    protected Gem() {
+    public Gem() {
     }
 
     public String getId() {

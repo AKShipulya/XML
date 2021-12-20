@@ -6,6 +6,9 @@ import com.epam.xml.entity.SyntheticGem;
 import com.epam.xml.entity.type.GemTag;
 import com.epam.xml.entity.type.GemType;
 import com.epam.xml.entity.type.Preciousness;
+import com.epam.xml.exception.ParserCustomException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -15,6 +18,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class GemHandler extends DefaultHandler {
+    private static final Logger LOGGER = LogManager.getLogger();
     private final List<Gem> gems;
     private Gem currentGem;
     private GemTag currentTag;

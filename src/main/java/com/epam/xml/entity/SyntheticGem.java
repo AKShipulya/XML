@@ -2,23 +2,28 @@ package com.epam.xml.entity;
 
 import com.epam.xml.entity.type.Preciousness;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "NaturalGem", propOrder = {"gemProductionPlace"})
 public class SyntheticGem extends Gem {
-    private String GemProductionPlace;
+    @XmlElement(name = "gem-production-place", namespace = "http://www.epam.com/gems", required = true)
+    private String gemProductionPlace;
 
     public SyntheticGem() {
     }
 
     public SyntheticGem(String id, String name, Preciousness preciousness, String gemProductionPlace) {
         super(id, name, preciousness);
-        GemProductionPlace = gemProductionPlace;
+        this.gemProductionPlace = gemProductionPlace;
     }
 
     public String getGemProductionPlace() {
-        return GemProductionPlace;
+        return gemProductionPlace;
     }
 
     public void setGemProductionPlace(String gemProductionPlace) {
-        GemProductionPlace = gemProductionPlace;
+        this.gemProductionPlace = gemProductionPlace;
     }
 
     @Override
@@ -35,13 +40,13 @@ public class SyntheticGem extends Gem {
 
         SyntheticGem that = (SyntheticGem) object;
 
-        return GemProductionPlace != null ? GemProductionPlace.equals(that.GemProductionPlace) : that.GemProductionPlace == null;
+        return gemProductionPlace != null ? gemProductionPlace.equals(that.gemProductionPlace) : that.gemProductionPlace == null;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (GemProductionPlace != null ? GemProductionPlace.hashCode() : 0);
+        result = 31 * result + (gemProductionPlace != null ? gemProductionPlace.hashCode() : 0);
         return result;
     }
 
@@ -50,7 +55,7 @@ public class SyntheticGem extends Gem {
     toString() {
         final StringBuilder stringBuilder = new StringBuilder("SyntheticGem{");
         stringBuilder.append("preciousness=").append(preciousness);
-        stringBuilder.append(", GemProductionPlace='").append(GemProductionPlace).append('\'');
+        stringBuilder.append(", GemProductionPlace='").append(gemProductionPlace).append('\'');
         stringBuilder.append('}').append("\n");
         return stringBuilder.toString();
     }
