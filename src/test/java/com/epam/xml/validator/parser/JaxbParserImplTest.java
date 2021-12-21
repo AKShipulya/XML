@@ -6,7 +6,6 @@ import com.epam.xml.entity.SyntheticGem;
 import com.epam.xml.entity.type.Preciousness;
 import com.epam.xml.exception.ParserCustomException;
 import com.epam.xml.parser.Parser;
-import com.epam.xml.parser.impl.DomParserImpl;
 import com.epam.xml.parser.impl.JaxbParserImpl;
 import org.junit.Assert;
 import org.junit.Test;
