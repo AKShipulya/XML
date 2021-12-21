@@ -1,11 +1,10 @@
-package com.epam.xml.validator.parser;
+package com.epam.xml.parser;
 
 import com.epam.xml.entity.Gem;
 import com.epam.xml.entity.NaturalGem;
 import com.epam.xml.entity.SyntheticGem;
 import com.epam.xml.entity.type.Preciousness;
 import com.epam.xml.exception.ParserCustomException;
-import com.epam.xml.parser.Parser;
 import com.epam.xml.parser.impl.SaxParserImpl;
 import org.junit.Assert;
 import org.junit.Test;

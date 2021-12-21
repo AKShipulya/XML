@@ -1,4 +1,4 @@
-package com.epam.xml.validator.validator;
+package com.epam.xml.validator;
 
 import com.epam.xml.exception.ParserCustomException;
 import com.epam.xml.validator.XmlValidator;

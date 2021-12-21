@@ -14,16 +14,28 @@
         <gem-production-place>JSC Gomel PO "Kristall"</gem-production-place>
     </synthetic-gem>
 
-    <natural-gem id="id3">
+    <synthetic-gem id="id3">
+        <name>Synthetic Opal</name>
+        <preciousness>precious</preciousness>
+        <gem-production-place>AUSTRALIA OPAL CO. "Suit 2/6 - 8 Crewe Pl, Rosebery NSW"</gem-production-place>
+    </synthetic-gem>
+
+    <natural-gem id="id4">
         <name>Diamond</name>
         <preciousness>precious</preciousness>
         <gem-deposit>South Africa-Diamonds Africa LLC</gem-deposit>
     </natural-gem>
 
-    <natural-gem id="id4">
+    <natural-gem id="id5">
         <name>Emerald</name>
         <preciousness>precious</preciousness>
         <gem-deposit>Colombia-OJSC Colombian emeralds</gem-deposit>
+    </natural-gem>
+
+    <natural-gem id="id6">
+        <name>Amethyst</name>
+        <preciousness>semiprecious</preciousness>
+        <gem-deposit>"Four Peaks Mining Company" Scottsdale AZ 85256</gem-deposit>
     </natural-gem>
 
 </gems>
