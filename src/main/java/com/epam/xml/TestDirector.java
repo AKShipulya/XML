@@ -13,9 +13,9 @@ public class TestDirector {
         String xsdFile = "src/test/resources/gems.xsd";
         XmlValidator validator = new XmlValidator();
 
-        XmlDirector director = new XmlDirector(validator, ParserType.DOM_PARSER);
+//        XmlDirector director = new XmlDirector(validator, ParserType.DOM_PARSER);
 //        XmlDirector director = new XmlDirector(validator, ParserType.SAX_PARSER);
-//        XmlDirector director = new XmlDirector(validator, ParserType.JAXB_PARSER);
+        XmlDirector director = new XmlDirector(validator, ParserType.JAXB_PARSER);
         List<Gem> result = director.parseXml(xmlFile, xsdFile);
         System.out.println(result);
     }

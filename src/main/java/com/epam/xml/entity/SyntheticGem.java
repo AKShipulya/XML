@@ -2,12 +2,12 @@ package com.epam.xml.entity;
 
 import com.epam.xml.entity.type.Preciousness;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NaturalGem", propOrder = {"gemProductionPlace"})
+@XmlType(name = "SyntheticGem")
 public class SyntheticGem extends Gem {
-    @XmlElement(name = "gem-production-place", namespace = "http://www.epam.com/gems", required = true)
     private String gemProductionPlace;
 
     public SyntheticGem() {
@@ -18,6 +18,7 @@ public class SyntheticGem extends Gem {
         this.gemProductionPlace = gemProductionPlace;
     }
 
+    @XmlElement(name = "gem-production-place", namespace = "http://www.epam.com/gems")
     public String getGemProductionPlace() {
         return gemProductionPlace;
     }
@@ -54,7 +55,9 @@ public class SyntheticGem extends Gem {
     public String
     toString() {
         final StringBuilder stringBuilder = new StringBuilder("SyntheticGem{");
-        stringBuilder.append("preciousness=").append(preciousness);
+        stringBuilder.append("id='").append(super.getId()).append('\'');
+        stringBuilder.append(", name='").append(super.getName()).append('\'');
+        stringBuilder.append(", preciousness='").append(preciousness);
         stringBuilder.append(", GemProductionPlace='").append(gemProductionPlace).append('\'');
         stringBuilder.append('}').append("\n");
         return stringBuilder.toString();

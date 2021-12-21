@@ -6,17 +6,11 @@ import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "gem", propOrder = {"name", "preciousness"})
+@XmlType(name = "Gem")
 @XmlSeeAlso({NaturalGem.class, SyntheticGem.class})
 public abstract class Gem {
-    @XmlAttribute(required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
     private String id;
-    @XmlElement(namespace = "http://www.epam.com/gems", required = true)
     private String name;
-    @XmlElement(namespace = "http://www.epam.com/gems", required = true)
     Preciousness preciousness;
 
     public Gem(String id, String name, Preciousness preciousness) {
@@ -28,6 +22,9 @@ public abstract class Gem {
     public Gem() {
     }
 
+    @XmlAttribute(required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlID
     public String getId() {
         return id;
     }
@@ -36,6 +33,7 @@ public abstract class Gem {
         this.id = id;
     }
 
+    @XmlElement(name = "name", namespace = "http://www.epam.com/gems")
     public String getName() {
         return name;
     }
@@ -44,6 +42,7 @@ public abstract class Gem {
         this.name = name;
     }
 
+    @XmlElement(namespace = "http://www.epam.com/gems")
     public Preciousness getPreciousness() {
         return preciousness;
     }

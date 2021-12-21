@@ -4,7 +4,6 @@ import com.epam.xml.exception.ParserCustomException;
 import com.epam.xml.validator.XmlValidator;
 import org.junit.Assert;
 import org.junit.Test;
-import sun.util.resources.cldr.saq.CurrencyNames_saq;
 
 public class XmlValidatorTest {
     private static final String XML_FILE_PATH = "src/test/resources/gems.xml";

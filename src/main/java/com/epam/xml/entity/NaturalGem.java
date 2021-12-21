@@ -2,12 +2,12 @@ package com.epam.xml.entity;
 
 import com.epam.xml.entity.type.Preciousness;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NaturalGem", propOrder = {"gemDeposit"})
+@XmlType(name = "NaturalGem")
 public class NaturalGem extends Gem {
-    @XmlElement(name = "gem-deposit", namespace = "http://www.epam.com/gems", required = true)
     private String gemDeposit;
 
     public NaturalGem() {
@@ -18,6 +18,7 @@ public class NaturalGem extends Gem {
         this.gemDeposit = gemDeposit;
     }
 
+    @XmlElement(name = "gem-deposit", namespace = "http://www.epam.com/gems")
     public String getGemDeposit() {
         return gemDeposit;
     }
@@ -53,7 +54,9 @@ public class NaturalGem extends Gem {
     @Override
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder("NaturalGem{");
-        stringBuilder.append("preciousness=").append(preciousness);
+        stringBuilder.append("id='").append(super.getId()).append('\'');
+        stringBuilder.append(", name='").append(super.getName()).append('\'');
+        stringBuilder.append(", preciousness='").append(preciousness).append('\'');
         stringBuilder.append(", GemDeposit='").append(gemDeposit).append('\'');
         stringBuilder.append('}').append("\n");
         return stringBuilder.toString();
