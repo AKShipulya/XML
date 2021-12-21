@@ -1,5 +1,6 @@
 package com.epam.xml.validator;
 
+import com.epam.xml.exception.ParserCustomException;
 import com.epam.xml.handler.GemErrorHandler;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,10 +18,11 @@ import java.io.IOException;
 public class XmlValidator {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    //xmlFile "src/test/resources/students_ext.xml"
-    //xsdFile "src/test/resources/students.xsd"
-    public boolean isValid(String xmlFile, String xsdFile) {
-        boolean result = false;
+    public boolean isValid(String xmlFile, String xsdFile) throws ParserCustomException {
+        if (xmlFile == null || xmlFile.isEmpty() || xsdFile == null || xsdFile.isEmpty()) {
+            throw new ParserCustomException("XML or XSD file empty or the path invalid!");
+        }
+        boolean result = true;
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory factory = SchemaFactory.newInstance(language);
         GemErrorHandler errorHandler = new GemErrorHandler();
@@ -31,8 +33,12 @@ public class XmlValidator {
             validator.validate(new StreamSource(xmlFile));
 
             LOGGER.info(xmlFile + " validation is ended");
-            LOGGER.info(xmlFile + " is valid");
-            result = true;
+            if (errorHandler.isErrorOccurred()) {
+                result = false;
+                LOGGER.warn(xmlFile + " is invalid");
+            } else {
+                LOGGER.info(xmlFile + " is valid");
+            }
         } catch (SAXException | IOException e) {
             LOGGER.warn("File reading error or file {} is not available: ", xmlFile, e);
         }

@@ -39,5 +39,4 @@ public class XmlDirector {
             throw new ParserCustomException("XML file is invalid!");
         return gems;
     }
-
 }

@@ -34,10 +34,6 @@ public class DomParserImpl implements Parser {
         this.GEMS = new ArrayList<>();
     }
 
-    public List<Gem> getGems() {
-        return GEMS;
-    }
-
     @Override
     public List<Gem> parse(String filePath) {
         Document document;
@@ -45,8 +41,8 @@ public class DomParserImpl implements Parser {
             DocumentBuilder documentBuilder = FACTORY.newDocumentBuilder();
             document = documentBuilder.parse(filePath);
             Element root = document.getDocumentElement();
-            createSpecifiedTypeGems(root, GemType.NATURAL_GEM);
             createSpecifiedTypeGems(root, GemType.SYNTHETIC_GEM);
+            createSpecifiedTypeGems(root, GemType.NATURAL_GEM);
             LOGGER.info("XML has been parsed successfully!");
         } catch (SAXException | IOException | ParserConfigurationException | ParserCustomException exception) {
             LOGGER.warn(String.format("File %s can't ber read or parsed", filePath), exception);
@@ -89,5 +85,9 @@ public class DomParserImpl implements Parser {
         NodeList nodeList = gemElement.getElementsByTagName(tagName);
         Node node = nodeList.item(0);
         return node.getTextContent();
+    }
+
+    private List<Gem> getGems() {
+        return GEMS;
     }
 }
