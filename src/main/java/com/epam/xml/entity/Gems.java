@@ -1,10 +1,12 @@
 package com.epam.xml.entity;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name="gems", namespace = "http://www.epam.com/gems")
+@XmlRootElement(name = "gems", namespace = "http://www.epam.com/gems")
 public class Gems {
     @XmlElements
             ({

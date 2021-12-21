@@ -3,7 +3,6 @@ package com.epam.xml.entity;
 import com.epam.xml.entity.type.Preciousness;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "SyntheticGem")

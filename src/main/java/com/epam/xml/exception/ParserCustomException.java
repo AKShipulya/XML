@@ -1,6 +1,6 @@
 package com.epam.xml.exception;
 
-public class ParserCustomException extends Exception{
+public class ParserCustomException extends Exception {
 
     public ParserCustomException() {
         super();
