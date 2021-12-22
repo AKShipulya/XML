@@ -5,44 +5,35 @@ import com.epam.xml.entity.NaturalGem;
 import com.epam.xml.entity.SyntheticGem;
 import com.epam.xml.entity.type.Preciousness;
 import com.epam.xml.exception.ParserCustomException;
-import com.epam.xml.parser.Parser;
 import com.epam.xml.parser.ParserType;
-import com.epam.xml.parser.impl.SaxParserImpl;
 import com.epam.xml.validator.XmlValidator;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import javax.xml.bind.JAXBException;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Matchers.anyList;
-import static org.mockito.Mockito.when;
-
 public class XmlDirectorTest {
-    private final static String FILE_PATH = "testPath";
-    private final static Gem TEST_GEM_1 = Mockito.mock(NaturalGem.class);
-    private final static Gem TEST_GEM_2 = Mockito.mock(SyntheticGem.class);
-    private final static List<Gem> TEST_GEMS_LIST = Arrays.asList(TEST_GEM_1, TEST_GEM_2);
+    private final static String XML_FILE_PATH = "src/test/resources/test_gems.xml";
+    private final static String XSD_FILE_PATH = "src/test/resources/gems.xsd";
 
-    // TODO: 21.12.2021 Create this test! 
     @Test
-    public void testParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException, JAXBException, FileNotFoundException {
+    public void testParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {
         //given
-        XmlValidator validator = Mockito.mock(XmlValidator.class);
-        when(validator.isValid(FILE_PATH,FILE_PATH)).thenReturn(true);
-        Parser parser = Mockito.mock(SaxParserImpl.class);
-        when(parser.parse(FILE_PATH)).thenReturn(TEST_GEMS_LIST);
-        ParserType parserType = Mockito.mock(ParserType.class);
-        when(parserType.ordinal()).thenReturn(1);
-        XmlDirector director = new XmlDirector(validator, parserType);
+        SyntheticGem testSyntheticGem = new SyntheticGem("id1", "Synthetic Diamond", Preciousness.PRECIOUS, "USA-Diamond Factory");
+        NaturalGem testNaturalGem = new NaturalGem("id2", "Diamond", Preciousness.PRECIOUS, "South Africa-Diamonds Africa LLC");
+        List<Gem> expected = Arrays.asList(testSyntheticGem, testNaturalGem);
+        XmlValidator validator = new XmlValidator();
+        XmlDirector directorSax = new XmlDirector(validator, ParserType.SAX_PARSER);
+        XmlDirector directorDom = new XmlDirector(validator, ParserType.DOM_PARSER);
+        XmlDirector directorJaxb = new XmlDirector(validator, ParserType.JAXB_PARSER);
         //when
-        List<Gem> gems = director.parseXml(FILE_PATH, FILE_PATH);
+        List<Gem> actualSax = directorSax.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
+        List<Gem> actualDom = directorDom.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
+        List<Gem> actualJaxb = directorJaxb.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
         //then
-        Assert.assertEquals(2, gems.size());
-
+        Assert.assertEquals(expected, actualSax);
+        Assert.assertEquals(expected, actualDom);
+        Assert.assertEquals(expected, actualJaxb);
     }
-
 }
