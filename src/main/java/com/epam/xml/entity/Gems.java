@@ -10,19 +10,16 @@ import java.util.List;
 public class Gems {
     @XmlElements
             ({
-                    @XmlElement(name = "synthetic-gem", type = SyntheticGem.class, required = false, namespace = "http://www.epam.com/gems"),
-                    @XmlElement(name = "natural-gem", type = NaturalGem.class, required = false, namespace = "http://www.epam.com/gems")
+                    @XmlElement(name = "synthetic-gem", type = SyntheticGem.class, required = true, namespace = "http://www.epam.com/gems"),
+                    @XmlElement(name = "natural-gem", type = NaturalGem.class, required = true, namespace = "http://www.epam.com/gems")
             })
     private List<Gem> gemList = new ArrayList<>();
 
-    public Gems() {
+    public void setGemList(List<Gem> gemList) {
+        this.gemList = gemList;
     }
 
-    public void setGemList(List<Gem> tariffs) {
-        this.gemList = tariffs;
-    }
-
-    public boolean add(Gem gem) {
+    public boolean addGem(Gem gem) {
         return gemList.add(gem);
     }
 

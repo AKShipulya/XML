@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public abstract class Gem {
     private String id;
     private String name;
-    Preciousness preciousness;
+    private Preciousness preciousness;
 
     public Gem(String id, String name, Preciousness preciousness) {
         this.id = id;
@@ -19,6 +19,7 @@ public abstract class Gem {
         this.preciousness = preciousness;
     }
 
+    //public constructor required by JAXB parser
     public Gem() {
     }
 
@@ -59,9 +60,7 @@ public abstract class Gem {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-
         Gem gem = (Gem) object;
-
         if (id != null ? !id.equals(gem.id) : gem.id != null) {
             return false;
         }

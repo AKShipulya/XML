@@ -5,25 +5,25 @@
     <synthetic-gem id="id1">
         <name>Synthetic Diamond</name>
         <preciousness>precious</preciousness>
-        <gem-production-place>USA-Diamond Factory</gem-production-place>
+        <gem-production-place>USA by USA-Diamond Factory Inc.</gem-production-place>
     </synthetic-gem>
 
     <synthetic-gem d="id2">
         <name>Synthetic Amethyst</name>
         <preciousness>semiprecious</preciousness>
-        <gem-production>JSC Gomel PO "Kristall"</gem-production>
+        <gem-production>Belarus by JSC Gomel PO "Kristall"</gem-production>
     </synthetic-gem>
 
     <natural-gem id="id3">
         <name>Diamond</name>
         <preciousness>precious</preciousness>
-        <deposit>South Africa-Diamonds Africa LLC</deposit>
+        <deposit>South Africa by South Africa-Diamonds Africa LLC</deposit>
     </natural-gem>
 
     <natural i="id4">
         <name>Emerald</name>
         <preciousness>precious</preciousness>
-        <gem-deposit>Colombia-OJSC Colombian emeralds</gem-deposit>
+        <gem-deposit>Colombia by Colombia-OJSC Colombian emeralds</gem-deposit>
     </natural>
 
 </gems>

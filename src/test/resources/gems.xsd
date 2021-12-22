@@ -38,7 +38,7 @@
         <complexContent>
             <extension base="tns:Gem">
                 <sequence>
-                    <element name="gem-deposit" type="string"/>
+                    <element name="gem-deposit-place" type="string"/>
                 </sequence>
             </extension>
         </complexContent>

@@ -15,19 +15,19 @@ import java.util.List;
 import java.util.Locale;
 
 public class GemHandler extends DefaultHandler {
-    private final List<Gem> gems;
-    private Gem currentGem;
-    private GemTag currentTag;
+    private final List<Gem> GEMS;
     private final EnumSet<GemTag> WITH_TEXT;
 
+    private Gem currentGem;
+    private GemTag currentTag;
+
     public GemHandler() {
-        gems = new ArrayList<>();
-        WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT);
+        GEMS = new ArrayList<>();
+        WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT_PLACE);
     }
 
-
-    public List<Gem> getGems() {
-        return gems;
+    public List<Gem> getGEMS() {
+        return GEMS;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class GemHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         if (qName.equals(GemType.NATURAL_GEM.toString()) || qName.equals(GemType.SYNTHETIC_GEM.toString())) {
-            gems.add(currentGem);
+            GEMS.add(currentGem);
         }
     }
 
@@ -77,9 +77,9 @@ public class GemHandler extends DefaultHandler {
                     String precious = data.toUpperCase(Locale.ROOT);
                     currentGem.setPreciousness(Preciousness.valueOf(precious));
                     break;
-                case GEM_DEPOSIT:
+                case GEM_DEPOSIT_PLACE:
                     NaturalGem tempNaturalGem = (NaturalGem) currentGem;
-                    tempNaturalGem.setGemDeposit(data);
+                    tempNaturalGem.setGemDepositPlace(data);
                     break;
                 case GEM_PRODUCTION_PLACE:
                     SyntheticGem tempSyntheticGem = (SyntheticGem) currentGem;

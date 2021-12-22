@@ -6,7 +6,7 @@ public enum GemTag {
     NAME,
     PRECIOUSNESS,
     GEM_PRODUCTION_PLACE,
-    GEM_DEPOSIT,
+    GEM_DEPOSIT_PLACE,
     SYNTHETIC_GEM,
     NATURAL_GEM;
 

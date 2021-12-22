@@ -5,13 +5,13 @@
     <synthetic-gem id="id1">
         <name>Synthetic Diamond</name>
         <preciousness>precious</preciousness>
-        <gem-production-place>USA-Diamond Factory</gem-production-place>
+        <gem-production-place>USA by USA-Diamond Factory Inc.</gem-production-place>
     </synthetic-gem>
 
     <natural-gem id="id2">
         <name>Diamond</name>
         <preciousness>precious</preciousness>
-        <gem-deposit>South Africa-Diamonds Africa LLC</gem-deposit>
+        <gem-deposit-place>South Africa by South Africa-Diamonds Africa LLC</gem-deposit-place>
     </natural-gem>
 
 </gems>

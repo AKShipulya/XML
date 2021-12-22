@@ -64,7 +64,7 @@ public class DomParserImpl implements Parser {
         switch (gemType) {
             case NATURAL_GEM:
                 gem = new NaturalGem();
-                ((NaturalGem) gem).setGemDeposit(getElementTextContent(gemElement, GemTag.GEM_DEPOSIT.toString()));
+                ((NaturalGem) gem).setGemDepositPlace(getElementTextContent(gemElement, GemTag.GEM_DEPOSIT_PLACE.toString()));
                 break;
             case SYNTHETIC_GEM:
                 gem = new SyntheticGem();

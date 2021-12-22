@@ -20,8 +20,8 @@ public class XmlDirectorTest {
     @Test
     public void testParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {
         //given
-        SyntheticGem testSyntheticGem = new SyntheticGem("id1", "Synthetic Diamond", Preciousness.PRECIOUS, "USA-Diamond Factory");
-        NaturalGem testNaturalGem = new NaturalGem("id2", "Diamond", Preciousness.PRECIOUS, "South Africa-Diamonds Africa LLC");
+        SyntheticGem testSyntheticGem = new SyntheticGem("id1", "Synthetic Diamond", Preciousness.PRECIOUS, "USA by USA-Diamond Factory Inc.");
+        NaturalGem testNaturalGem = new NaturalGem("id2", "Diamond", Preciousness.PRECIOUS, "South Africa by South Africa-Diamonds Africa LLC");
         List<Gem> expected = Arrays.asList(testSyntheticGem, testNaturalGem);
         XmlValidator validator = new XmlValidator();
         XmlDirector directorSax = new XmlDirector(validator, ParserType.SAX_PARSER);

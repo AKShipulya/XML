@@ -5,6 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * This handler has been created for XmlValidator (acc. to example from Blinov "JAVA Methods Programming" book)
+ */
 public class GemErrorHandler extends DefaultHandler {
     private final Logger LOGGER = LogManager.getLogger();
     private boolean isError = false;

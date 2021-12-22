@@ -5,7 +5,6 @@ import com.epam.xml.exception.ParserCustomException;
 import com.epam.xml.parser.Parser;
 import com.epam.xml.parser.ParserFactory;
 import com.epam.xml.parser.ParserType;
-import com.epam.xml.parser.impl.SaxParserImpl;
 import com.epam.xml.validator.XmlValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

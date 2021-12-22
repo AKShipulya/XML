@@ -7,23 +7,24 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "NaturalGem")
 public class NaturalGem extends Gem {
-    private String gemDeposit;
+    private String gemDepositPlace;
 
+    public NaturalGem(String id, String name, Preciousness preciousness, String gemDepositPlace) {
+        super(id, name, preciousness);
+        this.gemDepositPlace = gemDepositPlace;
+    }
+
+    //public constructor required by JAXB parser
     public NaturalGem() {
     }
 
-    public NaturalGem(String id, String name, Preciousness preciousness, String gemDeposit) {
-        super(id, name, preciousness);
-        this.gemDeposit = gemDeposit;
+    @XmlElement(name = "gem-deposit-place", namespace = "http://www.epam.com/gems")
+    public String getGemDepositPlace() {
+        return gemDepositPlace;
     }
 
-    @XmlElement(name = "gem-deposit", namespace = "http://www.epam.com/gems")
-    public String getGemDeposit() {
-        return gemDeposit;
-    }
-
-    public void setGemDeposit(String gemDeposit) {
-        this.gemDeposit = gemDeposit;
+    public void setGemDepositPlace(String gemDepositPlace) {
+        this.gemDepositPlace = gemDepositPlace;
     }
 
     @Override
@@ -37,16 +38,14 @@ public class NaturalGem extends Gem {
         if (!super.equals(object)) {
             return false;
         }
-
         NaturalGem that = (NaturalGem) object;
-
-        return gemDeposit != null ? gemDeposit.equals(that.gemDeposit) : that.gemDeposit == null;
+        return gemDepositPlace != null ? gemDepositPlace.equals(that.gemDepositPlace) : that.gemDepositPlace == null;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + (gemDeposit != null ? gemDeposit.hashCode() : 0);
+        result = 31 * result + (gemDepositPlace != null ? gemDepositPlace.hashCode() : 0);
         return result;
     }
 
@@ -55,8 +54,8 @@ public class NaturalGem extends Gem {
         final StringBuilder stringBuilder = new StringBuilder("NaturalGem{");
         stringBuilder.append("id='").append(super.getId()).append('\'');
         stringBuilder.append(", name='").append(super.getName()).append('\'');
-        stringBuilder.append(", preciousness='").append(preciousness).append('\'');
-        stringBuilder.append(", GemDeposit='").append(gemDeposit).append('\'');
+        stringBuilder.append(", preciousness='").append(super.getPreciousness()).append('\'');
+        stringBuilder.append(", GemDepositPlace='").append(gemDepositPlace).append('\'');
         stringBuilder.append('}').append("\n");
         return stringBuilder.toString();
     }

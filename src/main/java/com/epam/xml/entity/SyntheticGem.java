@@ -9,12 +9,13 @@ import javax.xml.bind.annotation.XmlType;
 public class SyntheticGem extends Gem {
     private String gemProductionPlace;
 
-    public SyntheticGem() {
-    }
-
     public SyntheticGem(String id, String name, Preciousness preciousness, String gemProductionPlace) {
         super(id, name, preciousness);
         this.gemProductionPlace = gemProductionPlace;
+    }
+
+    //public constructor required by JAXB parser
+    public SyntheticGem() {
     }
 
     @XmlElement(name = "gem-production-place", namespace = "http://www.epam.com/gems")
@@ -37,9 +38,7 @@ public class SyntheticGem extends Gem {
         if (!super.equals(object)) {
             return false;
         }
-
         SyntheticGem that = (SyntheticGem) object;
-
         return gemProductionPlace != null ? gemProductionPlace.equals(that.gemProductionPlace) : that.gemProductionPlace == null;
     }
 
@@ -51,12 +50,11 @@ public class SyntheticGem extends Gem {
     }
 
     @Override
-    public String
-    toString() {
+    public String toString() {
         final StringBuilder stringBuilder = new StringBuilder("SyntheticGem{");
         stringBuilder.append("id='").append(super.getId()).append('\'');
         stringBuilder.append(", name='").append(super.getName()).append('\'');
-        stringBuilder.append(", preciousness='").append(preciousness);
+        stringBuilder.append(", preciousness='").append(super.getPreciousness()).append('\'');
         stringBuilder.append(", GemProductionPlace='").append(gemProductionPlace).append('\'');
         stringBuilder.append('}').append("\n");
         return stringBuilder.toString();
