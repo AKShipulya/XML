@@ -23,8 +23,7 @@ public class XmlValidator {
             throw new ParserCustomException("XML or XSD file empty or the path invalid!");
         }
         boolean result = true;
-        String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        SchemaFactory factory = SchemaFactory.newInstance(language);
+        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         GemErrorHandler errorHandler = new GemErrorHandler();
         try {
             Schema schema = factory.newSchema(new File(xsdFile));
@@ -39,8 +38,8 @@ public class XmlValidator {
             } else {
                 LOGGER.info(xmlFile + " is valid");
             }
-        } catch (SAXException | IOException e) {
-            LOGGER.warn("File reading error or file {} is not available: ", xmlFile, e);
+        } catch (SAXException | IOException exception) {
+            LOGGER.warn("File reading error or file {} is not available: ", xmlFile, exception);
         }
         return result;
     }
