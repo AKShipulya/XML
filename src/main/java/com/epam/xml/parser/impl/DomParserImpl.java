@@ -27,18 +27,14 @@ import java.util.Locale;
 public class DomParserImpl implements Parser {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private final List<Gem> GEMS;
-    private final DocumentBuilderFactory FACTORY = DocumentBuilderFactory.newInstance();
-
-    public DomParserImpl() {
-        this.GEMS = new ArrayList<>();
-    }
+    private final List<Gem> GEMS = new ArrayList<>();
 
     @Override
     public List<Gem> parse(String filePath) {
         Document document;
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
-            DocumentBuilder documentBuilder = FACTORY.newDocumentBuilder();
+            DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             document = documentBuilder.parse(filePath);
             Element root = document.getDocumentElement();
             createSpecifiedTypeGems(root, GemType.SYNTHETIC_GEM);
@@ -82,8 +78,9 @@ public class DomParserImpl implements Parser {
     }
 
     private static String getElementTextContent(Element gemElement, String tagName) {
+        int firstNodeItem = 0;
         NodeList nodeList = gemElement.getElementsByTagName(tagName);
-        Node node = nodeList.item(0);
+        Node node = nodeList.item(firstNodeItem);
         return node.getTextContent();
     }
 

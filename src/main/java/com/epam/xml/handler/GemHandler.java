@@ -15,16 +15,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class GemHandler extends DefaultHandler {
-    private final List<Gem> GEMS;
-    private final EnumSet<GemTag> WITH_TEXT;
+    private final List<Gem> GEMS = new ArrayList<>();
+    private final EnumSet<GemTag> WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT_PLACE);
 
     private Gem currentGem;
     private GemTag currentTag;
-
-    public GemHandler() {
-        GEMS = new ArrayList<>();
-        WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT_PLACE);
-    }
 
     public List<Gem> getGEMS() {
         return GEMS;
@@ -47,6 +42,7 @@ public class GemHandler extends DefaultHandler {
             if (attributes.getLength() == 1) {
                 currentGem.setId(attributes.getValue(0));
             } else {
+                //Magic "0" - Attributes - getLocalName(): Params: index – The attribute index (zero-based).
                 int idAttributeIndex = attributes.getLocalName(0).equals(GemTag.ID.toString()) ? 0 : 1;
                 currentGem.setId(attributes.getValue(idAttributeIndex));
             }
