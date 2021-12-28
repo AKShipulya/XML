@@ -14,6 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SaxParserImpl implements Parser {
@@ -21,6 +22,7 @@ public class SaxParserImpl implements Parser {
 
     @Override
     public List<Gem> parse(String filePath) throws ParserCustomException {
+        List<Gem> gems = new ArrayList<>();
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
@@ -29,11 +31,11 @@ public class SaxParserImpl implements Parser {
             reader.setContentHandler(handler);
             reader.setErrorHandler(new GemErrorHandler());
             reader.parse(filePath);
-
-            LOGGER.info("XML has been parsed successfully!");
-            return handler.getGEMS();
+            gems = handler.getGEMS();
         } catch (ParserConfigurationException | SAXException | IOException exception) {
-            throw new ParserCustomException(String.format("File %s can't ber read or parsed", filePath), exception);
+            LOGGER.warn(String.format("File %s can't ber read or parsed", filePath), exception);
         }
+        LOGGER.info("XML has been parsed successfully!");
+        return gems;
     }
 }

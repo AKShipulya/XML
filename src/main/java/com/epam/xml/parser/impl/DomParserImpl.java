@@ -39,10 +39,10 @@ public class DomParserImpl implements Parser {
             Element root = document.getDocumentElement();
             createSpecifiedTypeGems(root, GemType.SYNTHETIC_GEM);
             createSpecifiedTypeGems(root, GemType.NATURAL_GEM);
-            LOGGER.info("XML has been parsed successfully!");
         } catch (SAXException | IOException | ParserConfigurationException | ParserCustomException exception) {
             LOGGER.warn(String.format("File %s can't ber read or parsed", filePath), exception);
         }
+        LOGGER.info("XML has been parsed successfully!");
         return getGems();
     }
 
