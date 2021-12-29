@@ -14,8 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class XmlDirectorTest {
-    private final static String XML_FILE_PATH = "src/test/resources/test_gems.xml";
-    private final static String XSD_FILE_PATH = "src/test/resources/gems.xsd";
+    private static final String XML_FILE_PATH = "src/test/resources/test_gems.xml";
+    private static final String XSD_FILE_PATH = "src/test/resources/gems.xsd";
 
     @Test
     public void testParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {

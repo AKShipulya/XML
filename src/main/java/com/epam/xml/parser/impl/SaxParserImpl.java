@@ -31,7 +31,7 @@ public class SaxParserImpl implements Parser {
             reader.setContentHandler(handler);
             reader.setErrorHandler(new GemErrorHandler());
             reader.parse(filePath);
-            gems = handler.getGEMS();
+            gems = handler.getGems();
         } catch (ParserConfigurationException | SAXException | IOException exception) {
             LOGGER.warn(String.format("File %s can't ber read or parsed", filePath), exception);
         }

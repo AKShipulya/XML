@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Locale;
 
 public class GemHandler extends DefaultHandler {
-    private final List<Gem> GEMS = new ArrayList<>();
-    private final EnumSet<GemTag> WITH_TEXT = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT_PLACE);
+    private final List<Gem> gems = new ArrayList<>();
+    private final EnumSet<GemTag> withText = EnumSet.range(GemTag.ID, GemTag.GEM_DEPOSIT_PLACE);
 
     private Gem currentGem;
     private GemTag currentTag;
 
-    public List<Gem> getGEMS() {
-        return GEMS;
+    public List<Gem> getGems() {
+        return gems;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class GemHandler extends DefaultHandler {
             }
         } else {
             GemTag temp = GemTag.valueOf(name.toUpperCase(Locale.ROOT));
-            if (WITH_TEXT.contains(temp)) {
+            if (withText.contains(temp)) {
                 currentTag = temp;
             }
         }
@@ -57,7 +57,7 @@ public class GemHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         if (qName.equals(GemType.NATURAL_GEM.toString()) || qName.equals(GemType.SYNTHETIC_GEM.toString())) {
-            GEMS.add(currentGem);
+            gems.add(currentGem);
         }
     }
 

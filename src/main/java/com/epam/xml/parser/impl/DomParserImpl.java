@@ -27,7 +27,7 @@ import java.util.Locale;
 public class DomParserImpl implements Parser {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private final List<Gem> GEMS = new ArrayList<>();
+    private final List<Gem> gems = new ArrayList<>();
 
     @Override
     public List<Gem> parse(String filePath) {
@@ -51,7 +51,7 @@ public class DomParserImpl implements Parser {
         for (int i = 0; i < gemNodeList.getLength(); i++) {
             Element gemElement = (Element) gemNodeList.item(i);
             Gem gem = buildGem(gemElement, gemType);
-            GEMS.add(gem);
+            gems.add(gem);
         }
     }
 
@@ -85,6 +85,6 @@ public class DomParserImpl implements Parser {
     }
 
     private List<Gem> getGems() {
-        return GEMS;
+        return gems;
     }
 }
