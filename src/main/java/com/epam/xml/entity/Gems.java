@@ -24,6 +24,6 @@ public class Gems {
     }
 
     public List<Gem> getGems() {
-        return gemList;
+        return new ArrayList<>(gemList);
     }
 }

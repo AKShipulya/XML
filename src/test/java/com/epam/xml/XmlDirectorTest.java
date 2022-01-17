@@ -18,22 +18,44 @@ public class XmlDirectorTest {
     private static final String XSD_FILE_PATH = "src/test/resources/gems.xsd";
 
     @Test
-    public void testParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {
+    public void testSaxParserParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {
         //given
         SyntheticGem testSyntheticGem = new SyntheticGem("id1", "Synthetic Diamond", Preciousness.PRECIOUS, "USA by USA-Diamond Factory Inc.");
         NaturalGem testNaturalGem = new NaturalGem("id2", "Diamond", Preciousness.PRECIOUS, "South Africa by South Africa-Diamonds Africa LLC");
         List<Gem> expected = Arrays.asList(testSyntheticGem, testNaturalGem);
         XmlValidator validator = new XmlValidator();
         XmlDirector directorSax = new XmlDirector(validator, ParserType.SAX_PARSER);
-        XmlDirector directorDom = new XmlDirector(validator, ParserType.DOM_PARSER);
-        XmlDirector directorJaxb = new XmlDirector(validator, ParserType.JAXB_PARSER);
         //when
         List<Gem> actualSax = directorSax.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
-        List<Gem> actualDom = directorDom.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
-        List<Gem> actualJaxb = directorJaxb.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
         //then
         Assert.assertEquals(expected, actualSax);
+    }
+
+    @Test
+    public void testDomParserParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {
+        //given
+        SyntheticGem testSyntheticGem = new SyntheticGem("id1", "Synthetic Diamond", Preciousness.PRECIOUS, "USA by USA-Diamond Factory Inc.");
+        NaturalGem testNaturalGem = new NaturalGem("id2", "Diamond", Preciousness.PRECIOUS, "South Africa by South Africa-Diamonds Africa LLC");
+        List<Gem> expected = Arrays.asList(testSyntheticGem, testNaturalGem);
+        XmlValidator validator = new XmlValidator();
+        XmlDirector directorDom = new XmlDirector(validator, ParserType.DOM_PARSER);
+        //when
+        List<Gem> actualDom = directorDom.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
+        //then
         Assert.assertEquals(expected, actualDom);
+    }
+
+    @Test
+    public void testJaxbParserParseXmlShouldCreateWhenXmlIsValid() throws ParserCustomException {
+        //given
+        SyntheticGem testSyntheticGem = new SyntheticGem("id1", "Synthetic Diamond", Preciousness.PRECIOUS, "USA by USA-Diamond Factory Inc.");
+        NaturalGem testNaturalGem = new NaturalGem("id2", "Diamond", Preciousness.PRECIOUS, "South Africa by South Africa-Diamonds Africa LLC");
+        List<Gem> expected = Arrays.asList(testSyntheticGem, testNaturalGem);
+        XmlValidator validator = new XmlValidator();
+        XmlDirector directorJaxb = new XmlDirector(validator, ParserType.JAXB_PARSER);
+        //when
+        List<Gem> actualJaxb = directorJaxb.parseXml(XML_FILE_PATH, XSD_FILE_PATH);
+        //then
         Assert.assertEquals(expected, actualJaxb);
     }
 }
