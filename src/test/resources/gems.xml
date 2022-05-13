@@ -1,0 +1,41 @@
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.epam.com/gems"
+      xsi:schemaLocation="http://www.epam.com/gems gems.xsd">
+
+    <synthetic-gem id="id1">
+        <name>Synthetic Diamond</name>
+        <preciousness>precious</preciousness>
+        <gem-production-place>USA by USA-Diamond Factory Inc.</gem-production-place>
+    </synthetic-gem>
+
+    <synthetic-gem id="id2">
+        <name>Synthetic Amethyst</name>
+        <preciousness>semiprecious</preciousness>
+        <gem-production-place>Belarus by JSC Gomel PO "Kristall"</gem-production-place>
+    </synthetic-gem>
+
+    <synthetic-gem id="id3">
+        <name>Synthetic Opal</name>
+        <preciousness>precious</preciousness>
+        <gem-production-place>Australia by AUSTRALIA OPAL CO. "Suit 2/6 - 8 Crewe Pl, Rosebery NSW"</gem-production-place>
+    </synthetic-gem>
+
+    <natural-gem id="id4">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <gem-deposit-place>South Africa by South Africa-Diamonds Africa LLC</gem-deposit-place>
+    </natural-gem>
+
+    <natural-gem id="id5">
+        <name>Emerald</name>
+        <preciousness>precious</preciousness>
+        <gem-deposit-place>Colombia by Colombia-OJSC Colombian emeralds</gem-deposit-place>
+    </natural-gem>
+
+    <natural-gem id="id6">
+        <name>Amethyst</name>
+        <preciousness>semiprecious</preciousness>
+        <gem-deposit-place>"USA by Four Peaks Mining Company" Scottsdale AZ 85256</gem-deposit-place>
+    </natural-gem>
+
+</gems>

@@ -1,0 +1,17 @@
+<gems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://www.epam.com/gems"
+      xsi:schemaLocation="http://www.epam.com/gems gems.xsd">
+
+    <synthetic-gem id="id1">
+        <name>Synthetic Diamond</name>
+        <preciousness>precious</preciousness>
+        <gem-production-place>USA by USA-Diamond Factory Inc.</gem-production-place>
+    </synthetic-gem>
+
+    <natural-gem id="id2">
+        <name>Diamond</name>
+        <preciousness>precious</preciousness>
+        <gem-deposit-place>South Africa by South Africa-Diamonds Africa LLC</gem-deposit-place>
+    </natural-gem>
+
+</gems>

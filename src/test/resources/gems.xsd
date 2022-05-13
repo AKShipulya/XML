@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.epam.com/gems"
+        xmlns:tns="http://www.epam.com/gems"
+        elementFormDefault="qualified">
+
+    <element name="gems" type="tns:Gems"/>
+
+    <element name="gem" type="tns:Gem" abstract="true"/>
+    <element name="synthetic-gem" type="tns:SyntheticGem" substitutionGroup="tns:gem"/>
+    <element name="natural-gem" type="tns:NaturalGem" substitutionGroup="tns:gem"/>
+
+    <complexType name="Gems">
+        <sequence>
+            <element ref="tns:gem" minOccurs="2" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Gem">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="preciousness" type="tns:Preciousness"/>
+        </sequence>
+        <attribute name="id" type="tns:id"/>
+    </complexType>
+
+    <complexType name="SyntheticGem">
+        <complexContent>
+            <extension base="tns:Gem">
+                <sequence>
+                    <element name="gem-production-place" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="NaturalGem">
+        <complexContent>
+            <extension base="tns:Gem">
+                <sequence>
+                    <element name="gem-deposit-place" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="Preciousness">
+        <restriction base="string">
+            <enumeration value="precious"/>
+            <enumeration value="semiprecious"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="id">
+        <restriction base="ID">
+            <pattern value="([a-zA-Z])[a-zA-Z0-9]{0,999}"/>
+        </restriction>
+    </simpleType>
+
+</schema>
